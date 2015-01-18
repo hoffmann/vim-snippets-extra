@@ -1,0 +1,52 @@
+snippet flask
+	from flask import Flask, request, g
+
+	app = Flask(__name__)
+	
+	@app.route("/")
+	def route_index():
+		${0}
+snippet route
+	@app.route("/${1}")
+	def route_${2}:
+		${3}
+# Encodes
+snippet coding 
+	# -*- coding: utf-8 -*-
+snippet main
+	import sys
+
+	def main(args=None):
+		if args is None:
+			args = sys.argv
+		${1}
+	
+	if __name__ == "__main__":
+		main()
+#misc
+snippet ipdb
+	import ipdb; ipdb.set_trace()
+snippet pydev
+	import pydevd; pydevd.settrace('localhost', port=50640, stdoutToServer=True, stderrToServer=True)
+# assertions
+snippet ae
+	self.assertEqual(${1}, ${2})
+# test function/method
+snippet test
+	def test_${1:description}(${2:`indent('.') ? 'self' : ''`}):
+		${0}
+# test case
+snippet testcase
+	class ${1:ExampleCase}(unittest.TestCase):
+
+		def test_${2:description}(self):
+			${0}
+snippet unittest
+	import unittest
+	import mock 
+
+	class ${1:ExampleCase}(unittest.TestCase):
+		def setUp(self):
+			pass
+		def test_${2:description}(self):
+			${0}
